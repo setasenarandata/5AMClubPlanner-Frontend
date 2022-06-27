@@ -14,6 +14,7 @@ import ProgressRing from '../static/progressRing'
 
 // Function to get the First Hour Progress Ring
 function firstHourProps(firstHour) {
+  
   let checks = 0
   for (let i = 0; i < firstHour.length; i++) {
     let obj = firstHour[i]
@@ -21,7 +22,7 @@ function firstHourProps(firstHour) {
       checks += 1
     } 
   }
-  return (checks/3)*100
+  return Math.floor((checks/3)*100)
 }
 
 // Function to get the Five Goals Progress Ring
@@ -39,9 +40,6 @@ function fiveGoalsProps(fiveGoals) {
 // START: index
 const index = ({ firstHourData, fiveGoalsData, firstChecks, fiveChecks}) => {
   // Motion consts
-  console.log("HAI IM DORY")
-  console.log(firstChecks)
-  console.log(fiveChecks)
   const svgVariants = {
     hidden: { opacity: 1 },
     visible: {
@@ -247,6 +245,7 @@ export default index
 
 // Exporting staticProps to fetch API's
 export async function getStaticProps(){
+  console.log("masuk static props")
   let firstHour = await fetch("https://fiveamclub-backend.herokuapp.com/firstHour")
   let fiveGoals = await fetch("https://fiveamclub-backend.herokuapp.com/fiveGoals")
   firstHour = await firstHour.json()
