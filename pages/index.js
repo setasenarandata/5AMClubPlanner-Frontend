@@ -244,7 +244,7 @@ export default index
 // END: index
 
 // Exporting staticProps to fetch API's
-export async function getStaticProps(){
+export async function getServerSideProps(){
   console.log("masuk static props")
   let firstHour = await fetch("https://fiveamclub-backend.herokuapp.com/firstHour")
   let fiveGoals = await fetch("https://fiveamclub-backend.herokuapp.com/fiveGoals")
